@@ -1,25 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
-
+import { Country } from './Pages/Country';
+import { Home } from './Pages/Home';
+import {BrowserRouter,Routes, Route,} from "react-router-dom";
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    // <div className='flex  flex-col justify-center align-middle bg-blackish min-h-screen font-Vietnam_Pro'>
+    //   <div className='w-full'>
+    //     <img src={heroImg} className='w-full object-cover h-[18rem] fixed top-0 ' />
+    //   </div>
+    //  <WorldHeader/>
+    //  <CountryContainer/>
+    // </div>
+    <>
+        <BrowserRouter>
+      <Routes> {/* Use Routes component */}
+        <Route
+          exact
+          path="/"
+          element={<Home/>}
+        /> 
+        <Route
+          exact
+          path="/country/:id"
+          element={<Country />}
+        />
+      </Routes>
+    </BrowserRouter>
+    </>
   );
 }
-
+ 
 export default App;
