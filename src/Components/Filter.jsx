@@ -36,7 +36,7 @@ export const Filter = () => {
         
         <div>
             <p  className='text-ss'>Region</p> 
-            <div className='grid grid-flow-col grid-rows-3 max-md:grid-rows-2 max-lg:grid-rows-1  gap-2'>
+            <div className='flex flex-wrap gap-5'>
             <button className={`${filterCountries["Americas"] ?'bg-light-black text-white':''} px-3 py-2 rounded-xl text-left`} onClick={()=>handleFilter(1,"Americas")}>Americas</button>
                 <button className={`${filterCountries["Antarctic"]?'bg-light-black text-white':''} px-3 py-2 rounded-xl text-left`} onClick={()=>handleFilter(1,"Antarctic")}>Antarctic</button>
                 <button className={`${filterCountries["Africa"]?'bg-light-black text-white':''} px-3 py-2 rounded-xl text-left`} onClick={()=>handleFilter(1,"Africa")}>Africa</button>

@@ -15,7 +15,7 @@ export const Pagination = () => {
         dispatch(setPages(page-1));
     }
   return (
-    <div className='flex justify-center my-4 gap-4 text-white'>
+    <div className='flex justify-center my-4 gap-4 text-white'> 
         <button onClick={handlePrevPage} disabled={page === 1}>{`<`}</button>
             <p>{`${page}/${totalPage}`}</p>
             <button onClick={handleNextPage} disabled={page === totalPage}>{`>`}</button>

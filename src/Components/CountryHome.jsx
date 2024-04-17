@@ -55,14 +55,14 @@ export const CountryHome = ({ countryData }) => {
     }
 
     return (
-        <div className='flex flex-col items-center'>
-            <img src={countryData.flags.svg} className='max-w-[250px] w-full rounded-lg -mt-12' alt={countryData.name.common} />
-            <div className='text-center m-5 text-white'>
+        <div className='flex flex-col items-center px-8'>
+            <img src={countryData.flags.svg} className='max-w-[250px] w-full rounded-lg -mt-10' alt={countryData.name.common} />
+            <div className='text-center text-white'>
                 <p className='text-xl'>{countryData.name.common}</p>
                 <p>{countryData.name.official}</p>
             </div>
-            <div className='flex flex-col m-3'>
-                <div className='flex justify-center gap-5 text-white'>
+            <div className='flex flex-col'>
+                <div className='flex justify-center gap-5 sm:flex-col sm:items-center text-white'>
                     <div className='flex gap-2 bg-light-black p-3 items-center rounded-xl'>
                         <p>Population</p>
                         <div className='w-[.1rem] h-full bg-blackish'></div>
@@ -95,21 +95,21 @@ export const CountryHome = ({ countryData }) => {
                     </div>
                 </div>
                 <br />
-                <div className='flex justify-between mt-6 items-center'>
+                <div className='flex justify-between mt-6 items-center '>
                     <p>Currencies</p>
-                    <div className='text-white'>
+                    <div className='text-white flex flex-wrap'>
                     {currencies.map((currency, index) => (
-                    <span className='px-[.5rem]' key={index}>
+                    <p className='px-[.5rem]' key={index}>
                         {index === currencies.length-1  ? currency : `${currency},`}
-                    </span>
+                    </p>
                     ))}
 
                     </div>
                 </div>
                 <br />
-                <div className='flex justify-between mt-6 items-center'>
+                <div className='flex  mt-6 flex-col gap-4'>
                     <p>Neighbouring Countries</p> 
-                    <div className='text-white'>
+                    <div className='text-white flex flex-wrap justify-start'>
                     {neigbours.map((con, index) => (
                         <Link to={`/country/${con}`} >
                             <span className='px-[.5rem] cursor-pointer' key={index}>

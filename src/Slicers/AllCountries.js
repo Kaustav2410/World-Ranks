@@ -33,7 +33,7 @@ export const allCountries = createSlice({
         status:null,
         searchTerm:"",
         currentPage:1,
-        itemsPerPage:20,
+        itemsPerPage:10,
         length:0,
         TotalPages:1
     },

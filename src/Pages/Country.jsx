@@ -5,14 +5,12 @@ import { WorldHeader } from '../Components/WorldHeader'
 
 export const Country = () => {
   return (
-    <div>
-        <div className='WorldHeader flex flex-col items-centre bg-blackish min-h-screen font-Vietnam_Pro'>
-      {/* <div className='w-full'>
-        <img src={heroImg} className='w-full object-cover h-[18rem] fixed top-0 ' />
-      </div> */}
+        <div className='flex  flex-col justify-center items-center bg-blackish font-Vietnam_Pro text-xs min-h-screen min-w-full'>
+      <div className='w-full'>
+        <img src={heroImg} className='w-screen object-cover h-[25rem] fixed top-0 ' />
+      </div>
       <WorldHeader />
      <SingleCountryContainer/>
-    </div>
     </div>
   )
 }

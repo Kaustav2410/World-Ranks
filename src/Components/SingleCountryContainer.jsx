@@ -17,18 +17,15 @@ export const SingleCountryContainer = () => {
     },[dispatch,tag])
 
     return (
-        <div className='bg-blackish text-light-gray z-10 flex flex-col my-[0rem] mx-auto max-w-[1250px] px-10  rounded-2xl'>  
-         {
-            isLoading ? 
+        <div className='bg-blackish text-light-gray z-10 flex flex-col -mt-20 mx-auto max-w-[1250px] sm:max-w-[min(700px,100%)] sm:pb-5 rounded-2xl min-h-screen'>
+            {isLoading ? (
                 <p>Loading...</p>
-            :
-            (
-                countryData!==undefined ?   
-                (<CountryHome countryData={countryData} />):(<p>Data not found</p>)
-            ) 
-        } 
-           
-            </div>
+            ) : countryData !== undefined ? (
+                <CountryHome countryData={countryData} />
+            ) : (
+                <p>Data not found</p>
+            )}
+        </div>
     );
 };
  

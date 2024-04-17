@@ -20,12 +20,12 @@ export const SingleCountry = ({country}) => {
     return chars.join(''); 
 } 
   return (
-    <div className=' flex w-full gap-10 text-base'>
+    <div className=' flex w-full gap-10 text-base sm:justify-between'>
       <img src={country.flags.svg} className='max-w-16'/>
       <Link to={`/country/${country.cca3}`} className='w-3/12'>
         {country.name.common}
       </Link>
-        <p className='w-4/12 max-lg:w-1/4 '>{addCommasToNumber(country.population)} </p>
+        <p className='w-4/12 max-lg:w-1/4  sm:hidden '>{addCommasToNumber(country.population)} </p>
         <p className='w-4/12 max-lg:w-1/4  max-lg:hidden'>{addCommasToNumber(country.area)} </p> 
         <p className='w-3/12 max-lg:w-1/4 '>{country.region} </p> 
     </div> 

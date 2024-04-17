@@ -4,7 +4,7 @@ import { SearchBar } from './SearchBar';
 import { Filter } from './Filter';
 import {useDispatch,useSelector} from 'react-redux'
 import { fetchCountries, setCountries, setLength  } from '../Slicers/AllCountries';
-
+import { Pagination } from '../Components/Pagination';
 
  
 export const CountryContainer = React.memo(() => { 
@@ -33,19 +33,19 @@ export const CountryContainer = React.memo(() => {
     
 
   return ( 
-    <div className='bg-blackish text-light-gray z-10 flex flex-col -mt-20 max-lg:w-[900px] max-w-[1250px] mx-auto px-10 rounded-2xl'>
+    <div className='bg-blackish text-light-gray z-10 flex flex-col -mt-20 mx-auto max-w-[1250px] sm:max-w-[min(700px,100%)] sm:pb-5 rounded-2xl min-h-screen px-8'>
         <SearchBar length={length} />
         <div className='flex gap-8 max-lg:flex-col'>
             <div> 
             <Filter/> 
             </div>
             <div className='flex flex-col gap-5 py-[2rem] w-3/4 max-lg:w-full'>
-                <div className='flex gap-10 '>
+                <div className='flex gap-10  sm:justify-between'>
                     <p className='  min-w-16'>Flag</p>
-                    <p className='w-3/12 max-lg:w-1/4 '>Country</p>
-                    <p className='w-4/12 max-lg:w-1/4 '>Population</p>
+                    <p className='w-3/12 max-lg:w-1/4 sm:w-1/3'>Country</p>
+                    <p className='w-4/12 max-lg:w-1/4 sm:hidden sm:w-1/3'>Population</p>
                     <p className='w-4/12 max-lg:hidden'>{`Area(kms)`}</p>
-                    <p className='w-3/12 max-lg:w-1/4 '>Region</p>
+                    <p className='w-3/12 max-lg:w-1/4 sm:w-1/3'>Region</p>
                 </div>
                 <hr></hr>
                 <div className='flex flex-col gap-10 text-white' >
@@ -65,6 +65,7 @@ export const CountryContainer = React.memo(() => {
                 </div>
             </div>
         </div>
+        <Pagination/>
     </div>
   )
 })
