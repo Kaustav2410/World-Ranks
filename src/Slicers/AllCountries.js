@@ -57,6 +57,7 @@ export const allCountries = createSlice({
             state.searchTerm= action.payload
         },
         setPages:(state,action)=>{
+            console.log(action.payload);
             state.currentPage= action.payload
         },
         setLength:(state,action)=>{

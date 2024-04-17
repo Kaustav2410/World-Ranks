@@ -4,7 +4,7 @@ import { SearchBar } from './SearchBar';
 import { Filter } from './Filter';
 import {useDispatch,useSelector} from 'react-redux'
 import { fetchCountries, setCountries, setLength  } from '../Slicers/AllCountries';
-import { Pagination } from './Pagination';
+
 
  
 export const CountryContainer = React.memo(() => { 
@@ -33,22 +33,22 @@ export const CountryContainer = React.memo(() => {
     
 
   return ( 
-    <div className='bg-blackish text-light-gray z-10 flex flex-col align-middle my-[0rem] mx-auto max-w-[1250px] px-10  rounded-2xl'>
+    <div className='bg-blackish text-light-gray z-10 flex flex-col -mt-20 max-lg:w-[900px] max-w-[1250px] mx-auto px-10 rounded-2xl'>
         <SearchBar length={length} />
-        <div className='flex gap-8'>
-            <div >
+        <div className='flex gap-8 max-lg:flex-col'>
+            <div> 
             <Filter/> 
             </div>
-            <div className='flex flex-col gap-5'>
-                <div className='flex gap-10'>
-                    <p className='min-w-16'>Flag</p>
-                    <p className='w-1/6'>Country</p>
-                    <p className='w-1/6'>Population</p>
-                    <p className='w-1/6'>{`Area(kms)`}</p>
-                    <p className='w-1/6'>Region</p>
+            <div className='flex flex-col gap-5 py-[2rem] w-3/4 max-lg:w-full'>
+                <div className='flex gap-10 '>
+                    <p className='  min-w-16'>Flag</p>
+                    <p className='w-3/12 max-lg:w-1/4 '>Country</p>
+                    <p className='w-4/12 max-lg:w-1/4 '>Population</p>
+                    <p className='w-4/12 max-lg:hidden'>{`Area(kms)`}</p>
+                    <p className='w-3/12 max-lg:w-1/4 '>Region</p>
                 </div>
                 <hr></hr>
-                <div className='flex flex-col justify-center align-middle gap-5 text-white' >
+                <div className='flex flex-col gap-10 text-white' >
                 {
                             loading ? 
                                 <p>Loading...</p>
@@ -65,7 +65,6 @@ export const CountryContainer = React.memo(() => {
                 </div>
             </div>
         </div>
-        <Pagination/>
     </div>
   )
 })

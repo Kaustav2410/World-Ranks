@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-export const SingleCountry = ({country,id}) => {
+export const SingleCountry = ({country}) => {
   // console.log(country);
   function addCommasToNumber(number) {
     // Convert the number to a string
@@ -18,16 +18,16 @@ export const SingleCountry = ({country,id}) => {
     chars.reverse();
     // Join the array back into a string
     return chars.join(''); 
-}
+} 
   return (
-    <div className=' flex  gap-10'>
+    <div className=' flex w-full gap-10 text-base'>
       <img src={country.flags.svg} className='max-w-16'/>
-      <Link to={`/country/${country.cca3}`} className='w-1/6'>
+      <Link to={`/country/${country.cca3}`} className='w-3/12'>
         {country.name.common}
       </Link>
-        <p className='w-1/6'>{addCommasToNumber(country.population)} </p>
-        <p className='w-1/6'>{addCommasToNumber(country.area)} </p> 
-        <p className='w-1/6'>{country.region} </p> 
+        <p className='w-4/12 max-lg:w-1/4 '>{addCommasToNumber(country.population)} </p>
+        <p className='w-4/12 max-lg:w-1/4  max-lg:hidden'>{addCommasToNumber(country.area)} </p> 
+        <p className='w-3/12 max-lg:w-1/4 '>{country.region} </p> 
     </div> 
   )
 }

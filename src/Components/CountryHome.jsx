@@ -68,7 +68,7 @@ export const CountryHome = ({ countryData }) => {
                         <div className='w-[.1rem] h-full bg-blackish'></div>
                         <p>{addCommasToNumber(countryData.population)}</p>
                     </div>
-                    <div className='flex gap-2 bg-light-black p-3 items-center rounded-xl'>
+                    <div className='flex gap-2 bg-light-black p-3 items-center rounded-xl  '>
                         <p>Area(kms<sup>2</sup>)</p>
                         <div className='w-[.1rem] h-full bg-blackish'></div>
                         <p>{addCommasToNumber(countryData.area)}</p>
