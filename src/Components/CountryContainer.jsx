@@ -5,6 +5,7 @@ import { Filter } from './Filter';
 import {useDispatch,useSelector} from 'react-redux'
 import { fetchCountries, setCountries, setLength  } from '../Slicers/AllCountries';
 import { Pagination } from '../Components/Pagination';
+import { SkeletonSingleCountry } from './SkeletonSingleCountry';
 
  
 export const CountryContainer = React.memo(() => { 
@@ -33,7 +34,7 @@ export const CountryContainer = React.memo(() => {
     
 
   return ( 
-    <div className='bg-blackish text-light-gray z-10 flex flex-col -mt-20 mx-auto max-w-[1250px] sm:max-w-[min(700px,100%)] sm:pb-5 rounded-2xl min-h-screen px-8'>
+    <div className='bg-blackish text-light-gray flex flex-col -mt-20 mx-auto max-w-[1250px] sm:max-w-[min(700px,100%)] sm:pb-5 rounded-2xl min-h-screen px-8 z-20 '>
         <SearchBar length={length} />
         <div className='flex gap-8 max-lg:flex-col'>
             <div> 
@@ -44,14 +45,18 @@ export const CountryContainer = React.memo(() => {
                     <p className='  min-w-16'>Flag</p>
                     <p className='w-3/12 max-lg:w-1/4 sm:w-1/3'>Country</p>
                     <p className='w-4/12 max-lg:w-1/4 sm:hidden sm:w-1/3'>Population</p>
-                    <p className='w-4/12 max-lg:hidden'>{`Area(kms)`}</p>
+                    <p className='w-4/12 max-lg:hidden'>Area(kms<sup>2</sup>)</p>
                     <p className='w-3/12 max-lg:w-1/4 sm:w-1/3'>Region</p>
                 </div>
                 <hr></hr>
                 <div className='flex flex-col gap-10 text-white' >
                 {
                             loading ? 
-                                <p>Loading...</p>
+                            (
+                                Array.from({ length: 10 }).map((_, index) => (
+                                    <SkeletonSingleCountry key={index} />
+                                ))
+                            )
                                 :
                                 (
                                     paginatedData && paginatedData.length > 0 ?
@@ -59,7 +64,7 @@ export const CountryContainer = React.memo(() => {
                                             <SingleCountry country={country} id={index} key={index} />
                                         )) 
                                         : 
-                                        <p>No data found</p>
+                                        <p>No Countries found according to the filter </p>
                                 ) 
                         }
                 </div>

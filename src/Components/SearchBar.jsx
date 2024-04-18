@@ -17,7 +17,7 @@ export const SearchBar = ({length}) => {
         </div>
         <div className='rounded-xl pr-7 pl-3  py-[.5rem] bg-light-black text-xs flex gap-3 w-1/3 max-lg:w-8/12'>
             <img src={SearchIcon} className='' />
-            <input className=' bg-light-black w-full' placeholder='Search by Name, Region, SubRegion' onChange={handleTerm} ></input>
+            <input className=' bg-light-black w-full ' placeholder='Search by Name, Region, SubRegion' onChange={handleTerm} ></input>
         </div>
     </div>
   )

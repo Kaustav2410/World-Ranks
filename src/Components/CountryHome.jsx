@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { neigbouringCountries } from '../Slicers/NeighbouringCountries';
+import { NeigbouringCountries } from './NeigbouringCountries';
 
 export const CountryHome = ({ countryData }) => {
     const [languages, setLanguages] = useState([]);
     const [currencies,setCurrencies] = useState([]);
     const [neigbours,setNeighours] = useState([]);
     const [url,setUrl] = useState('');
-    const dispatch = useDispatch();
     // console.log(countryData.languages);
     useEffect(() => {
         // Extracting languages from the countryData object and updating the languages state
@@ -38,11 +37,7 @@ export const CountryHome = ({ countryData }) => {
             })
             setNeighours(extractedBorders);
         }
-    }, [countryData.currencies,countryData.languages,countryData.borders]);
-    useEffect(()=>{
-        console.log(url);
-        // dispatch(neigbouringCountries(url));
-    },[url]) 
+    }, [countryData.currencies,countryData.languages,countryData.borders]); 
     function addCommasToNumber(number) {
         let numberString = number.toString();
         let chars = numberString.split('');
@@ -55,7 +50,7 @@ export const CountryHome = ({ countryData }) => {
     }
 
     return (
-        <div className='flex flex-col items-center px-8'>
+        <div className='flex flex-col items-center px-8 gap-10'>
             <img src={countryData.flags.svg} className='max-w-[250px] w-full rounded-lg -mt-10' alt={countryData.name.common} />
             <div className='text-center text-white'>
                 <p className='text-xl'>{countryData.name.common}</p>
@@ -84,9 +79,9 @@ export const CountryHome = ({ countryData }) => {
                     <p className='text-white'>{countryData.subregion}</p>
                 </div>
                 <br />
-                <div className='flex justify-between mt-6 items-center'>
+                <div className='flex justify-between mt-6 items-center gap-10 '>
                     <p>Languages</p>
-                    <div className='text-white'> 
+                    <div className='text-white flex flex-wrap justify-start max-w-1/3'> 
                         {languages.map((language, index) => (
                             <span className='px-[.5rem]' key={index}>
                             {index === languages.length-1  ? language : `${language},`} 
@@ -109,16 +104,7 @@ export const CountryHome = ({ countryData }) => {
                 <br />
                 <div className='flex  mt-6 flex-col gap-4'>
                     <p>Neighbouring Countries</p> 
-                    <div className='text-white flex flex-wrap justify-start'>
-                    {neigbours.map((con, index) => (
-                        <Link to={`/country/${con}`} >
-                            <span className='px-[.5rem] cursor-pointer' key={index}>
-                                {index === countryData.borders.length-1  ? con : `${con},`}
-                            </span>
-                        </Link>
-                    ))}
-
-                    </div>
+                    <NeigbouringCountries neigbours={neigbours} countryData={countryData} url={url} />
                 </div>
             </div> 
         </div>

@@ -30,7 +30,10 @@ export const allCountries = createSlice({
             Europe: true,
             Oceania: true,
         },
-        status:null,
+        status:{
+            independent:true,
+            member:true
+        },
         searchTerm:"",
         currentPage:1,
         itemsPerPage:10,
@@ -44,9 +47,13 @@ export const allCountries = createSlice({
             state.sortBy=action.payload
         },
         setStatus:(state,action)=>{
+        state.currentPage = 1;
+        const {key,value} =action.payload;
+        state.status={
+            ...state.status,[key]:value
+        }
             // console.log(state.status);
-            state.currentPage=1
-            state.status=action.payload
+            // console.log(action.payload);
         },
         setFilter:(state,action)=>{
             state.currentPage=1
@@ -63,7 +70,7 @@ export const allCountries = createSlice({
         setLength:(state,action)=>{
             state.length = action.payload
             // console.log(action.payload);
-            state.TotalPages=Math.ceil(action.payload/state.itemsPerPage)
+            state.TotalPages=(Math.ceil(action.payload/state.itemsPerPage))
             // console.log(state.TotalPages);
         },
         setCountries:(state,action)=>{
@@ -80,9 +87,8 @@ export const allCountries = createSlice({
                 );
             
                 const isInStatus = (
-                    (state.status === "independent" && country.unMember === false) ||
-                    (state.status === "member" && country.unMember === true) ||
-                    state.status === null
+                    (state.status["independent"] === true && country.unMember) ||
+                    (state.status["member"] === true && !country.unMember )
                 );
             
                 return isInSearchTerm && isInFilter && isInStatus;

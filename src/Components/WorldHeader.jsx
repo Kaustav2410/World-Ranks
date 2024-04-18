@@ -5,13 +5,9 @@ import { useDispatch } from 'react-redux'
 import { setPages } from '../Slicers/AllCountries'
 export const WorldHeader = () => {
   const dispatch = useDispatch();
-  const handleLogoClick = () => {
-    // dispatch(setPages(1));
-    console.log("clicked")
-  };
 
   return (
-    <div className=' w-dvh h-[25rem] z-20 flex justify-center items-center  '>
+    <div className=' w-dvh h-[25rem] z-10 flex justify-center items-center  '>
         <Link to={`/`} onClick={() => dispatch(setPages(1))}>
           <img src={Logo} className=' w-[18rem] cursor-pointer' />
         </Link>

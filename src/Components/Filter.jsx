@@ -10,17 +10,20 @@ export const Filter = () => {
     const filterCountries = useSelector((state) => state.allCountries.filterCountries);
     const status = useSelector((state) => state.allCountries.status);
     const dispatch = useDispatch()
-    function handleFilter(index,value){
+    function handleFilter(index,key){
         if(index===0){
-            dispatch(setSortBy(value));
+            dispatch(setSortBy(key));
         }
         else if(index === 2){
-            dispatch(setStatus(value));
+            console.log(key);
+            dispatch(setStatus({ key: key, value: !status[key] }));
+
         }
         else{
-            dispatch(setFilter(value)); 
+            dispatch(setFilter(key)); 
         }
     }
+    // console.log(status)
   return (
     <div className='Filter flex flex-col justify-center w-full gap-8'>
         <div className='flex flex-col gap-4'>
@@ -48,23 +51,20 @@ export const Filter = () => {
 
         <div>
             <p  className='text-ss mb-4'>Status</p>
-            <form className='flex flex-col gap-4 '>
-            <div className='flex gap-5 relative'>
-            <img src={done} className={`absolute w-[1.5rem] ${status==="member"?'':'invisible '}`}/> 
-                    <input className='appearance-none  min-w-[1.5rem] h-[1.5rem] border-2 rounded-sm checked:bg-light-blue' type="radio" name="Status" value="member" onClick={(e)=>handleFilter(2,e.target.value)} />
+            <div className='flex gap-5 relative pb-5' onClick={() => handleFilter(2, "member")}>
+                <img src={done} className={`absolute w-[1.5rem] ${status["member"] ? '' : 'invisible'}`} />
+                <button className={`appearance-none min-w-[1.5rem] h-[1.5rem] border-2 rounded-sm ${status["member"]?'bg-light-blue':''}`} ></button>
                 <label>
                     Member of the United Nations
                 </label>
             </div>
-            <div className='flex gap-5'>
-            <img src={done} className={`absolute w-[1.5rem] z-20 ${status==="independent"?'':'invisible '}`}/> 
-                    <input className='appearance-none  min-w-[1.5rem] h-[1.5rem] border-2 rounded-sm checked:bg-light-blue' type="radio" name="Status" value="independent"  onClick={(e)=>handleFilter(2,e.target.value)}/>
+            <div className='flex gap-5 relative' onClick={() => handleFilter(2, "independent")}>
+                <img src={done} className={`absolute w-[1.5rem] ${status["independent"] ? '' : 'invisible'}`} />
+                <button className={`appearance-none min-w-[1.5rem] h-[1.5rem] border-2 rounded-sm ${status["independent"]?'bg-light-blue':''}`} ></button>
                 <label>
-                    Independent
+                Independent
                 </label>
             </div>
-            </form>
-    
         </div>
     </div>
   )
